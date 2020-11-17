@@ -19,11 +19,13 @@ namespace Ejemplo1
     /// </summary>
     public partial class MostrarUsuario : Window
     {
-        public Usuario usuario;
+        public Usuario usuario { set; get; }
         public MostrarUsuario (Usuario usuario)
         {
-            this.usuario = usuario;
+            
             InitializeComponent();
+            this.usuario = usuario;
+            this.DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

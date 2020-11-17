@@ -5,9 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ejemplo1"
         mc:Ignorable="d"
-        Title="MostrarUsuario" Height="450" Width="800">
-    <Grid>
-        <Button Content="CERRAR" HorizontalAlignment="Left" Margin="590,215,0,0" VerticalAlignment="Top" Width="155" Height="45" Click="Button_Click"/>
+        Title="MostrarUsuario" Height="450" Width="500">
+    <StackPanel Margin="5,5,5,5" Orientation="Vertical">
+        <TextBlock Text="MOSTRAR USUARIO" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,20,0,20"/>
+        <Grid Height="243" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Nombre:" FontSize="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Primer Apellido:" FontSize="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Segundo Apellido:" FontSize="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Direccion:" FontSize="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Codigo Postal:" FontSize="17" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-    </Grid>
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=usuario.Nombre}" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=usuario.Apellido1}" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=usuario.Apellido2}" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Path=usuario.Direccion}" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Path=usuario.Codigo}" FontSize="17" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </Grid>
+
+        <Button Margin="190,40,190,0"  Content="CERRAR"  Click="Button_Click"/>
+
+    </StackPanel>
 </Window>
