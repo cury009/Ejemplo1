@@ -30,6 +30,29 @@ namespace Ejemplo1
             CrearUsuario();
         }
 
+        private bool Validation()
+        {
+            bool validate = true;
+
+            foreach(UIElement element in myGrid.Children)
+            {
+                if (element is TextBox)
+                {
+                    TextBox textBox = (TextBox)element;
+                    if (textBox.Text.Equals(""))
+                    {
+                        textBox.BorderBrush = new SolidColorBrush(Colors.Red);
+                        validate = false;
+                    }
+                    else
+                    {
+                        textBox.BorderBrush = new SolidColorBrush(Colors.LightGray);
+                    }
+                }
+            }
+
+            return validate;
+        }
         private void CrearUsuario()
         {
             String nombre = nombreBox.Text;
@@ -38,27 +61,40 @@ namespace Ejemplo1
             String direccion = direcconBox.Text;
             String codigo = codigoBox.Text;
 
-            MessageBoxResult resultado = MessageBox.Show("Nombre: " + nombre + "\n" +
-                            "Primer Apellido: " + apellido1 + "\n" +
-                            "Segundo Apellido: " + apellido2 + "\n" +
-                            "Direccion: " + direccion + "\n" +
-                            "Codigo Postal: " + codigo + "\n\n" +
-                            "¿Estos datos son correctos?",
-                            "Registro de usuario",
-                            MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
-            switch (resultado)
+           
+
+            if(Validation())
             {
-                case MessageBoxResult.Yes:
-                    MessageBox.Show("Usuario registrado con éxito");
-                    Usuario usuario = new Usuario(nombre, apellido1, apellido2, direccion, codigo);
-                    MostrarUsuario mostrarUsuario = new MostrarUsuario(usuario);
-                    mostrarUsuario.Show();
-                    break;
-                case MessageBoxResult.No:
-                    break;
-                case MessageBoxResult.Cancel:
-                    break;
+                warningLabel.Visibility = Visibility.Hidden;
+                MessageBoxResult resultado = MessageBox.Show("Nombre: " + nombre + "\n" +
+                           "Primer Apellido: " + apellido1 + "\n" +
+                           "Segundo Apellido: " + apellido2 + "\n" +
+                           "Direccion: " + direccion + "\n" +
+                           "Codigo Postal: " + codigo + "\n\n" +
+                           "¿Estos datos son correctos?",
+                           "Registro de usuario",
+                           MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                switch (resultado)
+                {
+                    case MessageBoxResult.Yes:
+                        MessageBox.Show("Usuario registrado con éxito");
+                        Usuario usuario = new Usuario(nombre, apellido1, apellido2, direccion, codigo);
+                        MostrarUsuario mostrarUsuario = new MostrarUsuario(usuario);
+                        mostrarUsuario.Show();
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                    case MessageBoxResult.Cancel:
+                        break;
+                }
             }
-        }
+            else
+            {
+                warningLabel.Visibility = Visibility.Visible;
+            }
+            //fin del if
+
+           
+        }//fin crear usuario
     }
 }
