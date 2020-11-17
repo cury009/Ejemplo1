@@ -27,5 +27,13 @@ namespace Ejemplo1
             this.listaUsuarios = Usuario.listaUsuarios;
             this.DataContext = this;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Usuario usuario = (Usuario)comboBox.SelectedItem;
+            MostrarUsuario mostrarUsuario = new MostrarUsuario(usuario);
+            this.Close();
+            mostrarUsuario.Show();
+        }
     }
 }

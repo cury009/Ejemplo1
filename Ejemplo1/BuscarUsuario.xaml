@@ -8,6 +8,7 @@
         Title="BuscarUsuario" Height="350" Width="500">
     <StackPanel Margin="5,5,5,5" >
         <Label Content="BUSQUEDA DE USUARIO" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,30,0,0" />
-        <ComboBox Margin="30,30,30,30" ItemsSource="{Binding Path=listaUsuarios}"/>
+        <ComboBox x:Name="comboBox" Margin="30,30,30,30" ItemsSource="{Binding Path=listaUsuarios}"/>
+        <Button Margin="160,0,160,0" Content="CONSULTAR" Click="Button_Click"/>
     </StackPanel>
 </Window>
