@@ -79,8 +79,9 @@ namespace Ejemplo1
                     case MessageBoxResult.Yes:
                         MessageBox.Show("Usuario registrado con éxito");
                         Usuario usuario = new Usuario(nombre, apellido1, apellido2, direccion, codigo);
-                        MostrarUsuario mostrarUsuario = new MostrarUsuario(usuario);
-                        mostrarUsuario.Show();
+                        Usuario.NuevoUsuario(usuario);
+                        //MostrarUsuario mostrarUsuario = new MostrarUsuario(usuario);
+                        //mostrarUsuario.Show();
                         break;
                     case MessageBoxResult.No:
                         break;
