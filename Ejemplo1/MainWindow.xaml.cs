@@ -27,24 +27,32 @@ namespace Ejemplo1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            CrearUsuario();
+        }
+
+        private void CrearUsuario()
+        {
             String nombre = nombreBox.Text;
             String apellido1 = apellido1Box.Text;
             String apellido2 = apellido2Box.Text;
             String direccion = direcconBox.Text;
             String codigo = codigoBox.Text;
 
-            MessageBoxResult resultado = MessageBox.Show("Nombre: " +nombre +"\n"+
-                            "Primer Apellido: "+apellido1+"\n"+
-                            "Segundo Apellido: "+apellido2+"\n"+
-                            "Direccion: "+direccion+"\n"+
-                            "Codigo Postal: "+codigo+"\n\n"+
+            MessageBoxResult resultado = MessageBox.Show("Nombre: " + nombre + "\n" +
+                            "Primer Apellido: " + apellido1 + "\n" +
+                            "Segundo Apellido: " + apellido2 + "\n" +
+                            "Direccion: " + direccion + "\n" +
+                            "Codigo Postal: " + codigo + "\n\n" +
                             "¿Estos datos son correctos?",
                             "Registro de usuario",
                             MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
-            switch(resultado)
+            switch (resultado)
             {
                 case MessageBoxResult.Yes:
                     MessageBox.Show("Usuario registrado con éxito");
+                    Usuario usuario = new Usuario(nombre, apellido1, apellido2, direccion, codigo);
+                    MostrarUsuario mostrarUsuario = new MostrarUsuario(usuario);
+                    mostrarUsuario.Show();
                     break;
                 case MessageBoxResult.No:
                     break;
